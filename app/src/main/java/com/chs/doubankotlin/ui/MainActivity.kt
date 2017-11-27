@@ -1,7 +1,8 @@
-package com.chs.doubankotlin
+package com.chs.doubankotlin.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.chs.doubankotlin.R
 
 class MainActivity : AppCompatActivity() {
 
