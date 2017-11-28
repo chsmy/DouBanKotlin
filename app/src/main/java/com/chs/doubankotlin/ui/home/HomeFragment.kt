@@ -10,6 +10,10 @@ import com.chs.doubankotlin.base.BaseFragment
  */
 class HomeFragment : BaseFragment(){
 
+    override fun init() {
+        mPresenter.start()
+    }
+
 
     override fun initPresenter(): BaseContract.Presenter {
         return HomePresenter()

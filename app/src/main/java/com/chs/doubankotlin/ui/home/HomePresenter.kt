@@ -2,6 +2,7 @@ package com.chs.doubankotlin.ui.home
 
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
+import android.util.Log
 import com.chs.doubankotlin.module.HomeTask
 import com.chs.doubankotlin.module.bean.Home
 import io.reactivex.Observer
@@ -28,19 +29,20 @@ class HomePresenter : LifecycleObserver, HomeContract.Presenter {
     override fun start() {
         mTask.getHomeData( object :Observer<Home>{
             override fun onComplete() {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.i("getHomeData","onComplete")
             }
 
             override fun onSubscribe(d: Disposable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.i("getHomeData","onSubscribe")
             }
 
             override fun onNext(t: Home) {
+                Log.i("getHomeData","onNext"+t.getTitle())
                 mView?.setData(t)
             }
 
             override fun onError(e: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.i("getHomeData","onError"+e.toString())
             }
 
         },0,10)

@@ -9,6 +9,11 @@ import com.chs.doubankotlin.base.BaseFragment
  * 邮箱：657083984@qq.com
  */
 class MineFragment : BaseFragment(){
+
+    override fun init() {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun getLayoutResources(): Int {
         return R.layout.mine_fragment
     }

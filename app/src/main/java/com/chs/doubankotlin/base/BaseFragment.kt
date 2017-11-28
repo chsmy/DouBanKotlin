@@ -16,14 +16,16 @@ abstract class BaseFragment : Fragment(),BaseContract.View<BaseContract.Presente
 
     abstract fun getLayoutResources() : Int
 
-    override lateinit var presenter : BaseContract.Presenter
+    override lateinit var mPresenter : BaseContract.Presenter
 
     abstract fun initPresenter() : BaseContract.Presenter
 
+    abstract fun init()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = initPresenter()
-        presenter.attachLifecycle(lifecycle)
+        mPresenter = initPresenter()
+        mPresenter.attachLifecycle(lifecycle)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -34,7 +36,12 @@ abstract class BaseFragment : Fragment(),BaseContract.View<BaseContract.Presente
     }
 
     override fun onDestroy() {
-        presenter.detachLifecycle(lifecycle)
+        mPresenter.detachLifecycle(lifecycle)
         super.onDestroy()
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
     }
 }

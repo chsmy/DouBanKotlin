@@ -10,18 +10,18 @@ import android.support.v7.app.AppCompatActivity
  */
 abstract class BaseActivity : AppCompatActivity(),BaseContract.View<BaseContract.Presenter>{
 
-     override lateinit var presenter : BaseContract.Presenter
+     override lateinit var mPresenter : BaseContract.Presenter
 
      abstract fun initPresenter() : BaseContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        presenter = initPresenter()
-        presenter.attachLifecycle(lifecycle)
+        mPresenter = initPresenter()
+        mPresenter.attachLifecycle(lifecycle)
     }
 
     override fun onDestroy() {
-        presenter.detachLifecycle(lifecycle)
+        mPresenter.detachLifecycle(lifecycle)
         super.onDestroy()
     }
 }
