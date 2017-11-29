@@ -10,13 +10,13 @@ import android.view.ViewGroup
  *  作者：chs on 2017-11-27 17:41
  * 邮箱：657083984@qq.com
  */
-abstract class BaseFragment : Fragment(),BaseContract.View<BaseContract.Presenter>{
+abstract class BaseFragment : Fragment(){
 
     var rootView : View? = null
 
     abstract fun getLayoutResources() : Int
 
-    override lateinit var mPresenter : BaseContract.Presenter
+    lateinit var mPresenter : BaseContract.Presenter
 
     abstract fun initPresenter() : BaseContract.Presenter
 

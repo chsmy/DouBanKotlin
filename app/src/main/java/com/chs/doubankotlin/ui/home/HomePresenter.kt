@@ -12,12 +12,14 @@ import io.reactivex.disposables.Disposable
  *  作者：chs on 2017-11-28 14:15
  * 邮箱：657083984@qq.com
  */
-class HomePresenter : LifecycleObserver, HomeContract.Presenter {
+class HomePresenter(view : HomeContract.View) : LifecycleObserver, HomeContract.Presenter {
     var mView: HomeContract.View? = null
     val mTask : HomeTask by lazy {
         HomeTask()
     }
-
+    init {
+        mView = view
+    }
     override fun attachLifecycle(lifecycle: Lifecycle) {
         lifecycle.addObserver(this)
     }

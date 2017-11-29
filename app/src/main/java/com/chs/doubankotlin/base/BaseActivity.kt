@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity
  */
 abstract class BaseActivity : AppCompatActivity(),BaseContract.View<BaseContract.Presenter>{
 
-     override lateinit var mPresenter : BaseContract.Presenter
+     lateinit var mPresenter : BaseContract.Presenter
 
      abstract fun initPresenter() : BaseContract.Presenter
 
