@@ -11,9 +11,21 @@ import retrofit2.http.Query
  */
 interface DataService{
 
-    //https://api.douban.com/v2/movie/in_theaters?apikey=0b2bdeda43b5688921839c8ecb20399b&city=%E5%8C%97%E4%BA%AC&start=0&count=100&client=&udid=
-    @GET("in_theaters?")
-    fun getHomeData(@Query("apikey") apikey :String, @Query("city") city :String,@Query("start") start: Int ,@Query("count") count: Int
-    ,@Query("client") client :String, @Query("udid") udid :String) : Observable<Home>
+    //获取热门电影
+    @GET("in_theaters")
+    fun getHeatMovie(@Query("start") start: Int, @Query("count") count: Int): Observable<Home>
+
+    //获取即将上映的电影
+    @GET("coming_soon")
+     fun getComingMovie(@Query("start") start: Int, @Query("count") count: Int): Observable<Home>
+
+    //排行前250
+    @GET("top250")
+    fun getTop250(@Query("start") start: Int,
+                          @Query("count") count: Int): Observable<Home>
+    //周榜单
+    @GET("weekly")
+    fun getWeekly(@Query("start") start: Int,
+                          @Query("count") count: Int): Observable<Home>
 
 }

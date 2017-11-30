@@ -8,16 +8,14 @@
     >
    <ImageView
     android:id="@+id/iv_pic"
-    android:layout_width="60dp"
-    android:layout_height="80dp"
+    android:layout_width="64dp"
+    android:layout_height="96dp"
     />
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/image_movie"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/image_movie"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_4"
         android:layout_weight="1"
         >
 
@@ -25,7 +23,9 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            />
 
         <android.support.v7.widget.AppCompatRatingBar
             android:id="@+id/rating_bar"

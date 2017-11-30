@@ -8,7 +8,7 @@ import android.view.View
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.base.BaseActivity
 import com.chs.doubankotlin.base.BaseContract
-import com.chs.doubankotlin.ui.home.FindFragment
+import com.chs.doubankotlin.ui.find.FindFragment
 import com.chs.doubankotlin.ui.home.HomeFragment
 import com.chs.doubankotlin.ui.home.MineFragment
 import kotlinx.android.synthetic.main.activity_main.*
