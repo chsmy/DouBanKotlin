@@ -10,6 +10,7 @@ import com.chs.doubankotlin.module.bean.Find
 class FindContract{
     interface View : BaseContract.View<Presenter>{
         fun setData(bean : Find)
+        fun showLoading()
     }
     interface Presenter : BaseContract.Presenter{
 

@@ -20,12 +20,7 @@ class FindPresenter(view : FindContract.View) : BasePresenter() {
     }
     override fun start() {
         super.start()
-        mTask.getFindData(object : Consumer<Find> {
-            override fun accept(t: Find) {
-                mView?.setData(t)
-            }
-
-        },0,10)
+        mTask.getFindData(Consumer<Find> { t -> mView?.setData(t) },0,9)
     }
 
 }

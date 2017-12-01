@@ -2,7 +2,9 @@ package com.chs.doubankotlin.adapter
 
 import com.chad.library.adapter.base.BaseSectionQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
+import com.chs.doubankotlin.R
 import com.chs.doubankotlin.module.bean.FindSection
+import com.chs.doubankotlin.util.ImageLoader
 
 /**
  *  作者：chs on 2017-11-30 11:20
@@ -12,11 +14,17 @@ class FindAdapter(layoutResId: Int, sectionHeadResId: Int,data: MutableList<Find
         BaseSectionQuickAdapter<FindSection,BaseViewHolder>(layoutResId,sectionHeadResId,data){
 
     override fun convertHead(helper: BaseViewHolder?, item: FindSection?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        helper!!.setText(R.id.tv_title, item!!.header)
+        helper.setVisible(R.id.tv_more, true)
+        helper.addOnClickListener(R.id.tv_more)
     }
 
     override fun convert(helper: BaseViewHolder?, item: FindSection?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val entity = item!!.t
+        helper!!.setText(R.id.tv_des, entity!!.title)
+        val path = entity.images?.large
+        if(path != null)
+        ImageLoader.loadImageView(mContext, entity.images?.large!!,helper.getView(R.id.iv_img)!!)
     }
 
 }

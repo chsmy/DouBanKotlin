@@ -2,7 +2,10 @@ package com.chs.doubankotlin.base
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import com.chs.doubankotlin.R
+import com.chs.doubankotlin.util.StatusBarUtil
 
 /**
  *  作者：chs on 2017-11-28 09:54
@@ -16,6 +19,7 @@ abstract class BaseActivity : AppCompatActivity(),BaseContract.View<BaseContract
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
+        StatusBarUtil.setColor(this, ContextCompat.getColor(this,R.color.colorPrimary));
         mPresenter = initPresenter()
         mPresenter.attachLifecycle(lifecycle)
     }

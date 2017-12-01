@@ -1,6 +1,7 @@
 package com.chs.doubankotlin.ui.find
 
 import android.support.v7.widget.GridLayoutManager
+import android.widget.Toast
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.adapter.FindAdapter
 import com.chs.doubankotlin.base.BaseContract
@@ -15,12 +16,27 @@ import kotlinx.android.synthetic.main.find_fragment.*
  */
 class FindFragment : BaseFragment(), FindContract.View {
 
+
     var mList = mutableListOf<FindSection>()
     var mAdapter : FindAdapter? = null
 
+    override fun showLoading() {
+        find_status_view.showLoading()
+    }
+
     override fun setData(bean: Find) {
+        find_status_view.showContent()
         bean.mSection.let { mList.addAll(it) }
         mAdapter = FindAdapter(R.layout.item_find_adapter,R.layout.item_find_header,mList)
+        mAdapter!!.setOnItemClickListener { adapter, view, position ->
+            val entity = bean.mSection.get(position)
+            if (entity.isHeader)
+                Toast.makeText(context, entity.header, Toast.LENGTH_LONG).show()
+            else
+                Toast.makeText(context, entity.t.title, Toast.LENGTH_LONG).show()
+        }
+        mAdapter!!.setOnItemChildClickListener { adapter, view, position ->
+            Toast.makeText(context, "onItemChildClick" + position, Toast.LENGTH_LONG).show() }
         rl_find_list.adapter = mAdapter
     }
 

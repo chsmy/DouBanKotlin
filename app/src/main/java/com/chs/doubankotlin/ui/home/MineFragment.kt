@@ -10,6 +10,10 @@ import com.chs.doubankotlin.module.bean.Home
  * 邮箱：657083984@qq.com
  */
 class MineFragment : BaseFragment(),HomeContract.View{
+    override fun showLoading() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun setData(bean: Home) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

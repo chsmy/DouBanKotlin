@@ -3,8 +3,8 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
-              android:paddingBottom="@dimen/dp_4"
-              android:paddingTop="@dimen/dp_4"
+              android:paddingBottom="@dimen/dp_6"
+              android:paddingTop="@dimen/dp_6"
               android:background="@color/white"
     >
 
@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:paddingLeft="@dimen/dp_10"
-        android:textSize="@dimen/sp_16"
-        android:textColor="@color/black"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/green"
         />
 
     <TextView
@@ -25,10 +25,9 @@
         android:layout_weight="1"
         android:gravity="right"
         android:paddingRight="@dimen/dp_10"
-        android:textColor="@color/black"
+        android:textColor="@color/green"
         android:text="more >"
-
-        android:textSize="@dimen/sp_16"
+        android:textSize="@dimen/sp_18"
         />
 
 </LinearLayout>

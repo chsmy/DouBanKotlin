@@ -14,7 +14,12 @@ import kotlinx.android.synthetic.main.home_fragment.*
  */
 class HomeFragment : BaseFragment(),HomeContract.View {
 
+    override fun showLoading() {
+        status_view.showLoading()
+    }
+
     override fun setData(bean: Home) {
+        status_view.showContent()
         bean.getSubjects()?.let { mList.addAll(it) }
         mAdapter?.notifyDataSetChanged()
     }

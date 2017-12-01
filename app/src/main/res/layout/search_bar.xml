@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    app:layout_collapseMode="pin"
+    android:background="@color/colorPrimary"
+    android:paddingTop="@dimen/statusbar_view_height">
+    <RelativeLayout
+        android:id="@+id/relative_search"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="@drawable/search_background"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/ic_search"
+            android:gravity="center"
+            android:text="@string/search_hint"/>
+    </RelativeLayout>
+</android.support.v7.widget.Toolbar>

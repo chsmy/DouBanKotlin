@@ -10,6 +10,7 @@ import com.chs.doubankotlin.module.bean.Home
 interface HomeContract{
     interface View : BaseContract.View<Presenter>{
         fun setData(bean : Home)
+        fun showLoading()
     }
     interface Presenter : BaseContract.Presenter{
 

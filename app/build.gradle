@@ -8,7 +8,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.chs.doubankotlin"
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -40,4 +40,5 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:4.3.0'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+    compile 'com.android.support:design:26.1.0'
 }

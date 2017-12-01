@@ -23,9 +23,9 @@ interface DataService{
     @GET("top250")
     fun getTop250(@Query("start") start: Int,
                           @Query("count") count: Int): Observable<Home>
-    //周榜单
-    @GET("weekly")
-    fun getWeekly(@Query("start") start: Int,
+    //新片榜
+    @GET("new_movies")
+    fun getNewMovie(@Query("apikey") apikey: String,@Query("start") start: Int,
                           @Query("count") count: Int): Observable<Home>
 
 }

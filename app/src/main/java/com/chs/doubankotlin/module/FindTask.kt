@@ -21,27 +21,18 @@ class FindTask : BaseTask(){
         val observable1 = RetrofitClient.getInstance().createReq(DataService::class.java)?.getTop250(start,count)
         observable1?.subscribeOn(Schedulers.io())?.unsubscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
 
-        val observable2 = RetrofitClient.getInstance().createReq(DataService::class.java)?.getWeekly(start,count)
+        val observable2 = RetrofitClient.getInstance().createReq(DataService::class.java)?.getNewMovie("0b2bdeda43b5688921839c8ecb20399b",start,count)
         observable2?.subscribeOn(Schedulers.io())?.unsubscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
 
-        Observable.zip(observable1,observable2, object :BiFunction<Home, Home, Find>{
-            override fun apply(t1: Home, t2: Home): Find {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-        })
-
+        // object :BiFunction<Home, Home, Find>{ override fun apply(t1: Home, t2: Home): Find}
         Observable.zip(observable1,observable2, BiFunction<Home, Home, Find> { t1, t2 ->
             val find = Find()
             val movList = mutableListOf<FindSection>()
             movList.add(FindSection(true,"Top250"))
-            for (item in t1.getSubjects()!!){
-                movList.add(FindSection(item))
-            }
+            t1.getSubjects()!!.mapTo(movList) { FindSection(it) }//mapTo 相当于for循环遍历
             movList.add(FindSection(true,"周榜"))
-            for (item in t2.getSubjects()!!){
-                movList.add(FindSection(item))
-            }
+            t2.getSubjects()!!.mapTo(movList) { FindSection(it) }
+            find.mSection = movList
             find
         }).subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
