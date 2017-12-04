@@ -1,8 +1,10 @@
 package com.chs.doubankotlin.net
 
 import com.chs.doubankotlin.module.bean.Home
+import com.chs.doubankotlin.module.bean.MovieDetail
 import io.reactivex.Observable
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -28,4 +30,7 @@ interface DataService{
     fun getNewMovie(@Query("apikey") apikey: String,@Query("start") start: Int,
                           @Query("count") count: Int): Observable<Home>
 
+    //电影详情 https://api.douban.com/v2/movie/subject/26378579
+    @GET("subject/{id}")
+    fun getMovieDetail(@Path("id") id : Int) : Observable<MovieDetail>
 }

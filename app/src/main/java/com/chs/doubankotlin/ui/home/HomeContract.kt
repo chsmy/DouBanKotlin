@@ -8,7 +8,7 @@ import com.chs.doubankotlin.module.bean.Home
  * 邮箱：657083984@qq.com
  */
 interface HomeContract{
-    interface View : BaseContract.View<Presenter>{
+    interface View : BaseContract.View{
         fun setData(bean : Home)
         fun showLoading()
     }

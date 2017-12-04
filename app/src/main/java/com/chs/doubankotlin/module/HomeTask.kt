@@ -12,9 +12,8 @@ import io.reactivex.Observer
 class HomeTask : BaseTask(){
 
     fun getHomeData(observer: Observer<Home>, start:Int ,count:Int){
-        val observable = RetrofitClient.getInstance().createReq(DataService::class.java)?.getHeatMovie(
-        start,count)
-        toSubscribe(observable!!,observer)
+        val observable = RetrofitClient.getInstance().createReq(DataService::class.java)!!.getHeatMovie(start,count)
+        toSubscribe(observable,observer)
     }
 
 }

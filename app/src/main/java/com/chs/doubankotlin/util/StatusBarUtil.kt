@@ -93,15 +93,15 @@ class StatusBarUtil{
             if (rootView != null && rootView is CoordinatorLayout) {
                 val coordinatorLayout = rootView as CoordinatorLayout
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                    coordinatorLayout!!.setFitsSystemWindows(false)
+                    coordinatorLayout.setFitsSystemWindows(false)
                     contentView.setBackgroundColor(calculateStatusColor(color, statusBarAlpha))
                     val isNeedRequestLayout = contentView.paddingTop < statusBarHeight
                     if (isNeedRequestLayout) {
                         contentView.setPadding(0, statusBarHeight, 0, 0)
-                        coordinatorLayout!!.post(Runnable { coordinatorLayout!!.requestLayout() })
+                        coordinatorLayout.post(Runnable { coordinatorLayout.requestLayout() })
                     }
                 } else {
-                    coordinatorLayout!!.setStatusBarBackgroundColor(calculateStatusColor(color, statusBarAlpha))
+                    coordinatorLayout.setStatusBarBackgroundColor(calculateStatusColor(color, statusBarAlpha))
                 }
             } else {
                 contentView.setPadding(0, statusBarHeight, 0, 0)

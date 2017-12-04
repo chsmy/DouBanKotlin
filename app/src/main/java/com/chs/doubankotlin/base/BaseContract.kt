@@ -8,7 +8,7 @@ import android.arch.lifecycle.Lifecycle
  */
 interface BaseContract{
 
-    interface View<T>{
+    interface View{
 //      var mPresenter : T
     }
     interface Presenter {

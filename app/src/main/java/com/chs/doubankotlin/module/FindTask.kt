@@ -24,7 +24,6 @@ class FindTask : BaseTask(){
         val observable2 = RetrofitClient.getInstance().createReq(DataService::class.java)?.getNewMovie("0b2bdeda43b5688921839c8ecb20399b",start,count)
         observable2?.subscribeOn(Schedulers.io())?.unsubscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
 
-        // object :BiFunction<Home, Home, Find>{ override fun apply(t1: Home, t2: Home): Find}
         Observable.zip(observable1,observable2, BiFunction<Home, Home, Find> { t1, t2 ->
             val find = Find()
             val movList = mutableListOf<FindSection>()

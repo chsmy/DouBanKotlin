@@ -10,14 +10,14 @@ import com.chs.doubankotlin.base.BaseActivity
 import com.chs.doubankotlin.base.BaseContract
 import com.chs.doubankotlin.ui.find.FindFragment
 import com.chs.doubankotlin.ui.home.HomeFragment
-import com.chs.doubankotlin.ui.home.MineFragment
+import com.chs.doubankotlin.ui.mine.MineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), View.OnClickListener {
 
-    var homeFragment : HomeFragment? = null
-    var findFragment : FindFragment? = null
-    var mineFragment : MineFragment? = null
+    private var homeFragment : HomeFragment? = null
+    private var findFragment : FindFragment? = null
+    private var mineFragment : MineFragment? = null
 
     override fun initPresenter(): BaseContract.Presenter {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

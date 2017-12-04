@@ -1,11 +1,13 @@
 package com.chs.doubankotlin.ui.home
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.adapter.HomeAdapter
 import com.chs.doubankotlin.base.BaseContract
 import com.chs.doubankotlin.base.BaseFragment
 import com.chs.doubankotlin.module.bean.Home
+import com.chs.doubankotlin.ui.detail.MovieDetailActivity
 import kotlinx.android.synthetic.main.home_fragment.*
 
 /**
@@ -40,6 +42,11 @@ class HomeFragment : BaseFragment(),HomeContract.View {
         rl_home_list.layoutManager = LinearLayoutManager(context)
         mAdapter = HomeAdapter(R.layout.item_home_adapter,mList)
         rl_home_list.adapter = mAdapter
+
+        mAdapter!!.setOnItemClickListener { adapter, view, position ->
+            val intent = Intent(context,MovieDetailActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }
