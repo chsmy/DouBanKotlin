@@ -16,6 +16,10 @@ import kotlinx.android.synthetic.main.home_fragment.*
  */
 class HomeFragment : BaseFragment(),HomeContract.View {
 
+
+    var mList = mutableListOf<Home.SubjectsEntity>()
+    var mAdapter : HomeAdapter? = null
+
     override fun showLoading() {
         status_view.showLoading()
     }
@@ -26,8 +30,6 @@ class HomeFragment : BaseFragment(),HomeContract.View {
         mAdapter?.notifyDataSetChanged()
     }
 
-    var mList = mutableListOf<Home.SubjectsEntity>()
-    var mAdapter : HomeAdapter? = null
 
     override fun initPresenter(): BaseContract.Presenter {
         return HomePresenter(this)
@@ -45,6 +47,7 @@ class HomeFragment : BaseFragment(),HomeContract.View {
 
         mAdapter!!.setOnItemClickListener { adapter, view, position ->
             val intent = Intent(context,MovieDetailActivity::class.java)
+            intent.putExtra("movieId",mList[position].id)
             startActivity(intent)
         }
     }

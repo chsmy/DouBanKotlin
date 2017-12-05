@@ -8,19 +8,28 @@ import android.view.View
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.base.BaseActivity
 import com.chs.doubankotlin.base.BaseContract
+import com.chs.doubankotlin.module.bean.MovieDetail
+import com.chs.doubankotlin.ui.detail.MovieDetailContract
+import com.chs.doubankotlin.ui.detail.MovieDetailPresenter
 import com.chs.doubankotlin.ui.find.FindFragment
 import com.chs.doubankotlin.ui.home.HomeFragment
 import com.chs.doubankotlin.ui.mine.MineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity(), View.OnClickListener {
+class MainActivity : BaseActivity(), View.OnClickListener , MovieDetailContract.View {
+
+    override fun setData(bean: MovieDetail) {
+    }
+
+    override fun showLoading() {
+    }
 
     private var homeFragment : HomeFragment? = null
     private var findFragment : FindFragment? = null
     private var mineFragment : MineFragment? = null
 
     override fun initPresenter(): BaseContract.Presenter {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return MovieDetailPresenter(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

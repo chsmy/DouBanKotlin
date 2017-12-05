@@ -1,7 +1,7 @@
 package com.chs.doubankotlin.ui.detail
 
 import com.chs.doubankotlin.base.BaseContract
-import com.chs.doubankotlin.module.bean.Find
+import com.chs.doubankotlin.module.bean.MovieDetail
 
 /**
  *  作者：chs on 2017-12-04 15:46
@@ -9,7 +9,7 @@ import com.chs.doubankotlin.module.bean.Find
  */
 interface MovieDetailContract{
     interface View : BaseContract.View{
-        fun setData(bean : Find)
+        fun setData(bean : MovieDetail)
         fun showLoading()
     }
 

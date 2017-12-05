@@ -18,7 +18,7 @@ abstract class BaseActivity : AppCompatActivity(),BaseContract.View{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        StatusBarUtil.setColor(this, ContextCompat.getColor(this,R.color.colorPrimary));
+        StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.colorPrimary),0);
         mPresenter = initPresenter()
         mPresenter.attachLifecycle(lifecycle)
     }

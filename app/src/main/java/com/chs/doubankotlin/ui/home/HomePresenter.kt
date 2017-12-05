@@ -28,12 +28,12 @@ class HomePresenter(view : HomeContract.View) : BasePresenter() {
 
             override fun onSubscribe(d: Disposable) {
                 Log.i("getHomeData","onSubscribe")
-                mView?.showLoading()
+                mView!!.showLoading()
             }
 
             override fun onNext(t: Home) {
                 Log.i("getHomeData","onNext"+t.getTitle())
-                mView?.setData(t)
+                mView!!.setData(t)
             }
 
             override fun onError(e: Throwable) {

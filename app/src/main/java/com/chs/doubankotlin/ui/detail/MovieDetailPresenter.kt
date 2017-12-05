@@ -20,7 +20,7 @@ class MovieDetailPresenter(view : MovieDetailContract.View) : BasePresenter() {
     init {
         mView = view
     }
-    var id : Int = 0
+    var id : String? = null
     override fun start() {
         super.start()
         mTask.getMovieDetail(object : Observer<MovieDetail>{
@@ -30,6 +30,7 @@ class MovieDetailPresenter(view : MovieDetailContract.View) : BasePresenter() {
 
             override fun onSubscribe(d: Disposable) {
                 Log.i("getDetail","onSubscribe")
+                mView!!.showLoading()
             }
 
             override fun onError(e: Throwable) {
@@ -38,6 +39,7 @@ class MovieDetailPresenter(view : MovieDetailContract.View) : BasePresenter() {
 
             override fun onNext(t: MovieDetail) {
                 Log.i("getDetail",t.getTitle())
+                mView!!.setData(t)
             }
 
         },id)

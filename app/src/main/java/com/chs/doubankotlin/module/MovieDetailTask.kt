@@ -11,8 +11,8 @@ import io.reactivex.Observer
  */
 class MovieDetailTask : BaseTask(){
 
-    fun getMovieDetail(observer: Observer<MovieDetail> ,id : Int){
-        val movieDetail = RetrofitClient.getInstance().createReq(DataService::class.java)!!.getMovieDetail(id)
+    fun getMovieDetail(observer: Observer<MovieDetail> ,id : String?){
+        val movieDetail = RetrofitClient.getInstance().createReq(DataService::class.java)!!.getMovieDetail(id!!)
         toSubscribe(movieDetail,observer)
     }
 

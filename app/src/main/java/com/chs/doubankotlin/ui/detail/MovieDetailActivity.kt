@@ -1,10 +1,17 @@
 package com.chs.doubankotlin.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
+import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.base.BaseActivity
 import com.chs.doubankotlin.base.BaseContract
-import com.chs.doubankotlin.module.bean.Find
+import com.chs.doubankotlin.module.bean.MovieDetail
+import com.chs.doubankotlin.util.ImageLoader
+import kotlinx.android.synthetic.main.activity_movie_detail.*
 
 /**
  *  作者：chs on 2017-12-04 15:13
@@ -12,22 +19,56 @@ import com.chs.doubankotlin.module.bean.Find
  */
 class MovieDetailActivity : BaseActivity() , MovieDetailContract.View {
 
-
+    var shareUrl : String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
         mPresenter.start()
+        val layoutManager : LinearLayoutManager = LinearLayoutManager(this)
+        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        rl_movie_detail_person.layoutManager = layoutManager
     }
 
     override fun initPresenter(): BaseContract.Presenter {
-        return MovieDetailPresenter(this)
+        val presenter = MovieDetailPresenter(this)
+        presenter.id = intent.getStringExtra("movieId")
+        return presenter
     }
 
-    override fun setData(bean: Find) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setData(bean: MovieDetail) {
+        movie_detail_status_view.showContent()
+        shareUrl = bean.getShare_url()
+        setSupportActionBar(toolbar)
+        toolbar.navigationIcon = ContextCompat.getDrawable(this,R.drawable.ic_back)
+        toolbar.title = ""
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
+        ImageLoader.loadImageView(this,bean.getImages()!!.large!!,movie_detail_img)
+        tv_detail_title.text = bean.getTitle()
+        tv_detail_desc.text = (bean.getYear()+"/"+bean.getGenres().toString()+"\n"+"原名："+bean.getOriginal_title()+"\n"
+                +"上映时间："+bean.getYear()+ "\n"+"片长："+"110分钟")
+        movie_detail_rating_bar.rating = bean.getRating()!!.average/2
+        movie_detail_desc.text = bean.getSummary()
+
+
     }
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        movie_detail_status_view.showLoading()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.movie_detail,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item!!.itemId){
+            R.id.menu_share -> startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND)
+                    .setType("text/*").putExtra(Intent.EXTRA_TEXT, shareUrl),
+                    "分享到"))
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
