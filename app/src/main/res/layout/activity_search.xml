@@ -3,24 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-        <include layout="@layout/search_bar_text"/>
+       <include layout="@layout/search_bar_edit"/>
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rl_find_list"
+            android:id="@+id/rl_search_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/dp_10"
-            android:paddingRight="@dimen/dp_10"
-            />
+            android:layout_height="wrap_content"/>
     </LinearLayout>
+
     <com.chs.doubankotlin.widget.MultipleStatusView
-        android:id="@+id/find_status_view"
+        android:id="@+id/status_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:emptyView="@layout/empty_view"

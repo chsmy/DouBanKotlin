@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="dp_90">90dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
     <dimen name="dp_128">128dp</dimen>
     <dimen name="dp_196">196dp</dimen>
+
 </resources>

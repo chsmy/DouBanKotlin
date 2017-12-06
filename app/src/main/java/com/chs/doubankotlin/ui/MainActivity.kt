@@ -8,17 +8,17 @@ import android.view.View
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.base.BaseActivity
 import com.chs.doubankotlin.base.BaseContract
-import com.chs.doubankotlin.module.bean.MovieDetail
-import com.chs.doubankotlin.ui.detail.MovieDetailContract
-import com.chs.doubankotlin.ui.detail.MovieDetailPresenter
+import com.chs.doubankotlin.module.bean.Home
 import com.chs.doubankotlin.ui.find.FindFragment
+import com.chs.doubankotlin.ui.home.HomeContract
 import com.chs.doubankotlin.ui.home.HomeFragment
+import com.chs.doubankotlin.ui.home.HomePresenter
 import com.chs.doubankotlin.ui.mine.MineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity(), View.OnClickListener , MovieDetailContract.View {
+class MainActivity : BaseActivity(), View.OnClickListener , HomeContract.View{
 
-    override fun setData(bean: MovieDetail) {
+    override fun setData(bean: Home) {
     }
 
     override fun showLoading() {
@@ -29,7 +29,7 @@ class MainActivity : BaseActivity(), View.OnClickListener , MovieDetailContract.
     private var mineFragment : MineFragment? = null
 
     override fun initPresenter(): BaseContract.Presenter {
-        return MovieDetailPresenter(this)
+        return HomePresenter(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

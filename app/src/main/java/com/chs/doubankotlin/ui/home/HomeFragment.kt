@@ -9,13 +9,13 @@ import com.chs.doubankotlin.base.BaseFragment
 import com.chs.doubankotlin.module.bean.Home
 import com.chs.doubankotlin.ui.detail.MovieDetailActivity
 import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.search_bar_text.*
 
 /**
  *  作者：chs on 2017-11-27 17:41
  * 邮箱：657083984@qq.com
  */
 class HomeFragment : BaseFragment(),HomeContract.View {
-
 
     var mList = mutableListOf<Home.SubjectsEntity>()
     var mAdapter : HomeAdapter? = null
@@ -50,6 +50,12 @@ class HomeFragment : BaseFragment(),HomeContract.View {
             intent.putExtra("movieId",mList[position].id)
             startActivity(intent)
         }
+
+        relative_search.setOnClickListener{
+           val intent = Intent(context,SearchActivity::class.java)
+           context.startActivity(intent)
+        }
+
     }
 
 }

@@ -18,12 +18,15 @@ class HomeAdapter(layoutResId: Int, data: MutableList<Home.SubjectsEntity>?) : B
         helper?.setText(R.id.tv_rating, item?.rating?.average.toString())
         val ratingBar : AppCompatRatingBar = helper?.getView(R.id.rating_bar)!!
         ratingBar.rating = item!!.rating?.average!!/2
-        helper.setText(R.id.tv_person, "导演："+item.directors?.get(0)?.name)
-        val builder = StringBuilder()
-        for(item in item.casts!!){
-            builder.append(item.name).append("/")
+        if(item.directors!!.isNotEmpty())
+            helper.setText(R.id.tv_person, "导演："+ item.directors!![0].name)
+        if(item.casts!!.isNotEmpty()){
+            val builder = StringBuilder()
+            for(items in item.casts!!){
+                builder.append(items.name).append("/")
+            }
+            helper.setText(R.id.tv_des, "演员："+ builder.toString().substring(0,builder.toString().length-1))
         }
-        helper.setText(R.id.tv_des, "演员："+ builder.toString().substring(0,builder.toString().length-1))
         ImageLoader.loadImageView(mContext, item.images?.large!!, helper.getView(R.id.iv_pic)!!)
     }
 

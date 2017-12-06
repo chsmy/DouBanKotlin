@@ -16,4 +16,8 @@ class HomeTask : BaseTask(){
         toSubscribe(observable,observer)
     }
 
+    fun searchMovies(observer: Observer<Home> ,q:String){
+        val observable = RetrofitClient.getInstance().createReq(DataService::class.java)!!.searchMovies(q)
+        toSubscribe(observable,observer)
+    }
 }

@@ -42,4 +42,27 @@ class HomePresenter(view : HomeContract.View) : BasePresenter() {
 
         },0,10)
     }
+
+    fun search(q:String){
+        mTask.searchMovies( object :Observer<Home>{
+            override fun onComplete() {
+                Log.i("searchMovies","onComplete")
+            }
+
+            override fun onSubscribe(d: Disposable) {
+                Log.i("searchMovies","onSubscribe")
+                mView!!.showLoading()
+            }
+
+            override fun onNext(t: Home) {
+                Log.i("searchMovies","onNext"+t.getTitle())
+                mView!!.setData(t)
+            }
+
+            override fun onError(e: Throwable) {
+                Log.i("searchMovies","onError"+e.toString())
+            }
+
+        },q)
+    }
 }

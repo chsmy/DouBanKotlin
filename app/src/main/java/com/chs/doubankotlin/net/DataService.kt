@@ -33,4 +33,8 @@ interface DataService{
     //电影详情 https://api.douban.com/v2/movie/subject/26378579
     @GET("subject/{id}")
     fun getMovieDetail(@Path("id") id : String) : Observable<MovieDetail>
+
+    //搜索
+    @GET("search")
+    fun searchMovies(@Query("q") q: String) : Observable<Home>
 }

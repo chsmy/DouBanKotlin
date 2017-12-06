@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import com.chs.doubankotlin.R
+import com.chs.doubankotlin.adapter.MovieDetailPersonAdapter
 import com.chs.doubankotlin.base.BaseActivity
 import com.chs.doubankotlin.base.BaseContract
 import com.chs.doubankotlin.module.bean.MovieDetail
@@ -24,7 +25,7 @@ class MovieDetailActivity : BaseActivity() , MovieDetailContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
         mPresenter.start()
-        val layoutManager : LinearLayoutManager = LinearLayoutManager(this)
+        val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         rl_movie_detail_person.layoutManager = layoutManager
     }
@@ -48,10 +49,12 @@ class MovieDetailActivity : BaseActivity() , MovieDetailContract.View {
         tv_detail_title.text = bean.getTitle()
         tv_detail_desc.text = (bean.getYear()+"/"+bean.getGenres().toString()+"\n"+"原名："+bean.getOriginal_title()+"\n"
                 +"上映时间："+bean.getYear()+ "\n"+"片长："+"110分钟")
+        movie_detail_tv_rating.text = bean.getRating()!!.average.toString()
         movie_detail_rating_bar.rating = bean.getRating()!!.average/2
         movie_detail_desc.text = bean.getSummary()
 
-
+        val adapter = MovieDetailPersonAdapter(R.layout.item_detail_person, bean.getCasts() as MutableList<MovieDetail.CastsEntity>?)
+        rl_movie_detail_person.adapter = adapter
     }
 
     override fun showLoading() {
