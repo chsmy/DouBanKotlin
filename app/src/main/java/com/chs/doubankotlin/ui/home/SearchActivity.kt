@@ -6,9 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.adapter.HomeAdapter
-import com.chs.doubankotlin.base.BaseActivity
-import com.chs.doubankotlin.base.BaseContract
 import com.chs.doubankotlin.module.bean.Home
+import com.chs.doubankotlin.mvp.MvpActivity
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.search_bar_edit.*
 
@@ -16,7 +15,10 @@ import kotlinx.android.synthetic.main.search_bar_edit.*
  *  作者：chs on 2017-12-06 14:32
  * 邮箱：657083984@qq.com
  */
-class SearchActivity : BaseActivity(),HomeContract.View{
+class SearchActivity : MvpActivity<IHomeView,HomePresenter<IHomeView>>() ,IHomeView{
+    override fun createPresenter(): HomePresenter<IHomeView> {
+        return HomePresenter(this)
+    }
 
     var mList = mutableListOf<Home.SubjectsEntity>()
     var mAdapter : HomeAdapter? = null
@@ -56,9 +58,4 @@ class SearchActivity : BaseActivity(),HomeContract.View{
     override fun showLoading() {
         status_view.showLoading()
     }
-
-    override fun initPresenter(): BaseContract.Presenter {
-        return HomePresenter(this)
-    }
-
 }

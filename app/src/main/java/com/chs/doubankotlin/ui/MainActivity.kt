@@ -6,17 +6,19 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v4.content.ContextCompat
 import android.view.View
 import com.chs.doubankotlin.R
-import com.chs.doubankotlin.base.BaseActivity
-import com.chs.doubankotlin.base.BaseContract
 import com.chs.doubankotlin.module.bean.Home
+import com.chs.doubankotlin.mvp.MvpActivity
 import com.chs.doubankotlin.ui.find.FindFragment
-import com.chs.doubankotlin.ui.home.HomeContract
 import com.chs.doubankotlin.ui.home.HomeFragment
 import com.chs.doubankotlin.ui.home.HomePresenter
+import com.chs.doubankotlin.ui.home.IHomeView
 import com.chs.doubankotlin.ui.mine.MineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity(), View.OnClickListener , HomeContract.View{
+class MainActivity : MvpActivity<IHomeView,HomePresenter<IHomeView>>(),IHomeView, View.OnClickListener {
+    override fun createPresenter(): HomePresenter<IHomeView> {
+        return HomePresenter(this)
+    }
 
     override fun setData(bean: Home) {
     }
@@ -28,9 +30,6 @@ class MainActivity : BaseActivity(), View.OnClickListener , HomeContract.View{
     private var findFragment : FindFragment? = null
     private var mineFragment : MineFragment? = null
 
-    override fun initPresenter(): BaseContract.Presenter {
-        return HomePresenter(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
