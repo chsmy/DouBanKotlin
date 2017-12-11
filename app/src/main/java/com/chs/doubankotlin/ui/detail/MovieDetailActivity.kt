@@ -17,10 +17,10 @@ import kotlinx.android.synthetic.main.activity_movie_detail.*
  *  作者：chs on 2017-12-04 15:13
  * 邮箱：657083984@qq.com
  */
-class MovieDetailActivity : MvpActivity<MovieDetailContract.View, MovieDetailPresenter<MovieDetailContract.View>>(), MovieDetailContract.View {
+class MovieDetailActivity : MvpActivity<IMovieView, MovieDetailPresenter<IMovieView>>(),IMovieView{
 
-    override fun createPresenter(): MovieDetailPresenter<MovieDetailContract.View> {
-        val presenter = MovieDetailPresenter<MovieDetailContract.View>(this)
+    override fun createPresenter(): MovieDetailPresenter<IMovieView> {
+        val presenter = MovieDetailPresenter<IMovieView>(this)
         presenter.id = intent.getStringExtra("movieId")
         return presenter
     }

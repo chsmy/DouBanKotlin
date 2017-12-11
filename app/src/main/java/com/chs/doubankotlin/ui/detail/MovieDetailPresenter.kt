@@ -12,9 +12,9 @@ import io.reactivex.disposables.Disposable
  *  作者：chs on 2017-12-04 15:45
  * 邮箱：657083984@qq.com
  */
-class MovieDetailPresenter<in V:MvpView>(view : MovieDetailContract.View) : MvpBasePresenter<V>() {
+class MovieDetailPresenter<in V:MvpView>(view : IMovieView) : MvpBasePresenter<V>() {
 
-    private var mView : MovieDetailContract.View? = null
+    private var mView : IMovieView? = null
     private val mTask : MovieDetailTask by lazy {
         MovieDetailTask()
     }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.support.v7.widget.GridLayoutManager
 import android.widget.Toast
 import com.chs.doubankotlin.R
-import com.chs.doubankotlin.R.id.*
 import com.chs.doubankotlin.adapter.FindAdapter
 import com.chs.doubankotlin.module.bean.Find
 import com.chs.doubankotlin.module.bean.FindSection
@@ -18,8 +17,8 @@ import kotlinx.android.synthetic.main.search_bar_text.*
  *  作者：chs on 2017-11-28 14:51
  * 邮箱：657083984@qq.com
  */
-class FindFragment : MvpFragment<FindContract.View,FindPresenter<FindContract.View>>(), FindContract.View {
-    override fun createPresenter(): FindPresenter<FindContract.View> {
+class FindFragment : MvpFragment<IFindView,FindPresenter<IFindView>>() ,IFindView{
+    override fun createPresenter(): FindPresenter<IFindView> {
         return FindPresenter(this)
     }
 

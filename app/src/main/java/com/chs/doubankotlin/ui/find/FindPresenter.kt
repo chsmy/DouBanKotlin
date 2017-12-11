@@ -10,9 +10,9 @@ import io.reactivex.functions.Consumer
  *  作者：chs on 2017-11-30 11:25
  * 邮箱：657083984@qq.com
  */
-class FindPresenter<in V: MvpView>(view : FindContract.View) : MvpBasePresenter<V>() {
+class FindPresenter<in V: MvpView>(view : IFindView) : MvpBasePresenter<V>() {
 
-    var mView: FindContract.View? = null
+    var mView: IFindView? = null
     val mTask : FindTask by lazy {
        FindTask()
     }
