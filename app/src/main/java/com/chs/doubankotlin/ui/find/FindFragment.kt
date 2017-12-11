@@ -2,7 +2,9 @@ package com.chs.doubankotlin.ui.find
 
 import android.content.Intent
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
 import android.widget.Toast
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.adapter.FindAdapter
 import com.chs.doubankotlin.module.bean.Find
@@ -44,6 +46,11 @@ class FindFragment : MvpFragment<IFindView,FindPresenter<IFindView>>() ,IFindVie
             startActivity(intent)
             }
         }
+        mAdapter!!.setOnItemClickListener(object : BaseQuickAdapter.OnItemClickListener{
+            override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+            }
+
+        })
         mAdapter!!.setOnItemChildClickListener { adapter, view, position ->
             Toast.makeText(context, "onItemChildClick" + position, Toast.LENGTH_LONG).show() }
         rl_find_list.adapter = mAdapter
@@ -57,7 +64,6 @@ class FindFragment : MvpFragment<IFindView,FindPresenter<IFindView>>() ,IFindVie
             val intent = Intent(context, SearchActivity::class.java)
             context.startActivity(intent)
         }
-
     }
 
     override fun getLayoutResources(): Int {

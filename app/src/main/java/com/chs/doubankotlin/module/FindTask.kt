@@ -28,9 +28,9 @@ class FindTask : BaseTask(){
             val find = Find()
             val movList = mutableListOf<FindSection>()
             movList.add(FindSection(true,"Top250"))
-            t1.getSubjects()!!.mapTo(movList) { FindSection(it) }//mapTo 相当于for循环遍历
+            t1.subjects.mapTo(movList) { FindSection(it) }//mapTo 相当于for循环遍历
             movList.add(FindSection(true,"周榜"))
-            t2.getSubjects()!!.mapTo(movList) { FindSection(it) }
+            t2.subjects.mapTo(movList) { FindSection(it) }
             find.mSection = movList
             find
         }).subscribeOn(Schedulers.io())

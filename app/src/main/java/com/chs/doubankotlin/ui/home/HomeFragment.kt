@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.adapter.HomeAdapter
 import com.chs.doubankotlin.module.bean.Home
+import com.chs.doubankotlin.module.bean.Subject
 import com.chs.doubankotlin.mvp.MvpFragment
 import com.chs.doubankotlin.ui.detail.MovieDetailActivity
 import kotlinx.android.synthetic.main.home_fragment.*
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.search_bar_text.*
  */
 class HomeFragment : MvpFragment<IHomeView ,HomePresenter<IHomeView>>(),IHomeView {
 
-    var mList = mutableListOf<Home.SubjectsEntity>()
+    var mList = mutableListOf<Subject>()
     var mAdapter : HomeAdapter? = null
 
     override fun showLoading() {
@@ -25,7 +26,7 @@ class HomeFragment : MvpFragment<IHomeView ,HomePresenter<IHomeView>>(),IHomeVie
 
     override fun setData(bean: Home) {
         status_view.showContent()
-        bean.getSubjects()?.let { mList.addAll(it) }
+        bean.subjects.let { mList.addAll(it) }
         mAdapter?.notifyDataSetChanged()
     }
     override fun createPresenter(): HomePresenter<IHomeView> {

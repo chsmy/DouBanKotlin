@@ -39,7 +39,7 @@ class MovieDetailPresenter<in V:MvpView>(view : IMovieView) : MvpBasePresenter<V
             }
 
             override fun onNext(t: MovieDetail) {
-                Log.i("getDetail",t.getTitle())
+                Log.i("getDetail",t.title)
                 mView!!.setData(t)
             }
 

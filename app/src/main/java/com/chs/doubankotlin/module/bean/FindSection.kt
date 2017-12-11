@@ -6,9 +6,9 @@ import com.chad.library.adapter.base.entity.SectionEntity
  *  作者：chs on 2017-11-30 16:14
  * 邮箱：657083984@qq.com
  */
-class FindSection : SectionEntity<Home.SubjectsEntity> {
+class FindSection : SectionEntity<Subject> {
 
-    constructor(entity: Home.SubjectsEntity) : super(entity) {
+    constructor(entity: Subject) : super(entity) {
 
     }
 

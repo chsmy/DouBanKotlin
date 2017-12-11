@@ -22,9 +22,7 @@ class FindAdapter(layoutResId: Int, sectionHeadResId: Int,data: MutableList<Find
     override fun convert(helper: BaseViewHolder?, item: FindSection?) {
         val entity = item!!.t
         helper!!.setText(R.id.tv_des, entity!!.title)
-        val path = entity.images?.large
-        if(path != null)
-        ImageLoader.loadImageView(mContext, entity.images?.large!!,helper.getView(R.id.iv_img)!!)
+        ImageLoader.loadImageView(mContext, entity.images.large,helper.getView(R.id.iv_img)!!)
     }
 
 }

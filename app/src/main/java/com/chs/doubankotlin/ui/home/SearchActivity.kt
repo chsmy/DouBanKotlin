@@ -7,6 +7,7 @@ import android.support.v7.widget.SearchView
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.adapter.HomeAdapter
 import com.chs.doubankotlin.module.bean.Home
+import com.chs.doubankotlin.module.bean.Subject
 import com.chs.doubankotlin.mvp.MvpActivity
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.search_bar_edit.*
@@ -20,7 +21,7 @@ class SearchActivity : MvpActivity<IHomeView,HomePresenter<IHomeView>>() ,IHomeV
         return HomePresenter(this)
     }
 
-    var mList = mutableListOf<Home.SubjectsEntity>()
+    var mList = mutableListOf<Subject>()
     var mAdapter : HomeAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +52,7 @@ class SearchActivity : MvpActivity<IHomeView,HomePresenter<IHomeView>>() ,IHomeV
 
     override fun setData(bean: Home) {
         status_view.showContent()
-        bean.getSubjects()?.let { mList.addAll(it) }
+        bean.subjects.let { mList.addAll(it) }
         mAdapter?.notifyDataSetChanged()
     }
 

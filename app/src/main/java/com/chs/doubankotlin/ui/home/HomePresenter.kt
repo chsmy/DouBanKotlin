@@ -33,7 +33,7 @@ class HomePresenter<in V:MvpView>(view : IHomeView) : MvpBasePresenter<V>() {
             }
 
             override fun onNext(t: Home) {
-                Log.i("getHomeData","onNext"+t.getTitle())
+                Log.i("getHomeData","onNext"+t.title)
                 mView!!.setData(t)
             }
 
@@ -56,7 +56,7 @@ class HomePresenter<in V:MvpView>(view : IHomeView) : MvpBasePresenter<V>() {
             }
 
             override fun onNext(t: Home) {
-                Log.i("searchMovies","onNext"+t.getTitle())
+                Log.i("searchMovies","onNext"+t.title)
                 mView!!.setData(t)
             }
 

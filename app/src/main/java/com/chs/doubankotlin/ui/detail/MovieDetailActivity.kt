@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.adapter.MovieDetailPersonAdapter
+import com.chs.doubankotlin.module.bean.Cast
 import com.chs.doubankotlin.module.bean.MovieDetail
 import com.chs.doubankotlin.mvp.MvpActivity
 import com.chs.doubankotlin.util.ImageLoader
@@ -38,22 +39,22 @@ class MovieDetailActivity : MvpActivity<IMovieView, MovieDetailPresenter<IMovieV
 
     override fun setData(bean: MovieDetail) {
         movie_detail_status_view.showContent()
-        shareUrl = bean.getShare_url()
+        shareUrl = bean.shareUrl
         setSupportActionBar(toolbar)
         toolbar.navigationIcon = ContextCompat.getDrawable(this,R.drawable.ic_back)
         toolbar.title = ""
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        ImageLoader.loadImageView(this,bean.getImages()!!.large!!,movie_detail_img)
-        tv_detail_title.text = bean.getTitle()
-        tv_detail_desc.text = (bean.getYear()+"/"+bean.getGenres().toString()+"\n"+"原名："+bean.getOriginal_title()+"\n"
-                +"上映时间："+bean.getYear()+ "\n"+"片长："+"110分钟")
-        movie_detail_tv_rating.text = bean.getRating()!!.average.toString()
-        movie_detail_rating_bar.rating = bean.getRating()!!.average/2
-        movie_detail_desc.text = bean.getSummary()
+        ImageLoader.loadImageView(this,bean.images.large,movie_detail_img)
+        tv_detail_title.text = bean.title
+        tv_detail_desc.text = (bean.year+"/"+bean.genres.toString()+"\n"+"原名："+bean.originalTitle+"\n"
+                +"上映时间："+bean.year+ "\n"+"片长："+"110分钟")
+        movie_detail_tv_rating.text = bean.rating.average.toString()
+        movie_detail_rating_bar.rating = bean.rating.average/2
+        movie_detail_desc.text = bean.summary
 
-        val adapter = MovieDetailPersonAdapter(R.layout.item_detail_person, bean.getCasts() as MutableList<MovieDetail.CastsEntity>?)
+        val adapter = MovieDetailPersonAdapter(R.layout.item_detail_person, bean.casts as MutableList<Cast>?)
         rl_movie_detail_person.adapter = adapter
     }
 
