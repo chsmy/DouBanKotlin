@@ -7,3 +7,4 @@ kotlin 练习项目
 
 ![](https://github.com/chsmy/DouBanKotlin/blob/master/image/m1.gif)
 
+使用 mvp ，retrofit2，rxjava2，glide，BaseRecyclerViewAdapterHelper
