@@ -10,10 +10,10 @@ import io.reactivex.schedulers.Schedulers
  * 邮箱：657083984@qq.com
  */
 open class BaseTask{
-    protected fun <T> toSubscribe(o: Observable<T>, observer: Observer<T>) {
-        o.subscribeOn(Schedulers.io())//指定Observable
-                .unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())//指定observer
-                .subscribe(observer)
+    protected fun <T> toSubscribe(o: Observable<T>?, observer: Observer<T>) {
+        o?.subscribeOn(Schedulers.io())//指定Observable
+                ?.unsubscribeOn(Schedulers.io())
+                ?.observeOn(AndroidSchedulers.mainThread())//指定observer
+                ?.subscribe(observer)
     }
 }

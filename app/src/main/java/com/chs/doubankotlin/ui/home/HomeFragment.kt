@@ -38,12 +38,12 @@ class HomeFragment : MvpFragment<IHomeView ,HomePresenter<IHomeView>>(),IHomeVie
     }
 
     override fun init() {
-        mPresenter!!.start()
+        mPresenter?.start()
         rl_home_list.layoutManager = LinearLayoutManager(context)
         mAdapter = HomeAdapter(R.layout.item_home_adapter,mList)
         rl_home_list.adapter = mAdapter
 
-        mAdapter!!.setOnItemClickListener { adapter, view, position ->
+        mAdapter?.setOnItemClickListener { adapter, view, position ->
             val intent = Intent(context,MovieDetailActivity::class.java)
             intent.putExtra("movieId",mList[position].id)
             startActivity(intent)

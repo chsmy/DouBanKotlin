@@ -30,7 +30,7 @@ class MovieDetailActivity : MvpActivity<IMovieView, MovieDetailPresenter<IMovieV
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
-        mPresenter!!.start()
+        mPresenter?.start()
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         rl_movie_detail_person.layoutManager = layoutManager
@@ -68,7 +68,7 @@ class MovieDetailActivity : MvpActivity<IMovieView, MovieDetailPresenter<IMovieV
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item!!.itemId){
+        when(item?.itemId){
             R.id.menu_share -> startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND)
                     .setType("text/*").putExtra(Intent.EXTRA_TEXT, shareUrl),
                     "分享到"))

@@ -2,9 +2,7 @@ package com.chs.doubankotlin.ui.find
 
 import android.content.Intent
 import android.support.v7.widget.GridLayoutManager
-import android.view.View
 import android.widget.Toast
-import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chs.doubankotlin.R
 import com.chs.doubankotlin.adapter.FindAdapter
 import com.chs.doubankotlin.module.bean.Find
@@ -36,7 +34,7 @@ class FindFragment : MvpFragment<IFindView,FindPresenter<IFindView>>() ,IFindVie
         find_status_view.showContent()
         bean.mSection.let { mList.addAll(it) }
         mAdapter = FindAdapter(R.layout.item_find_adapter,R.layout.item_find_header,mList)
-        mAdapter!!.setOnItemClickListener { adapter, view, position ->
+        mAdapter?.setOnItemClickListener { adapter, view, position ->
             val entity = bean.mSection.get(position)
             if (entity.isHeader){
                 Toast.makeText(context, entity.header, Toast.LENGTH_LONG).show()
@@ -46,18 +44,13 @@ class FindFragment : MvpFragment<IFindView,FindPresenter<IFindView>>() ,IFindVie
             startActivity(intent)
             }
         }
-        mAdapter!!.setOnItemClickListener(object : BaseQuickAdapter.OnItemClickListener{
-            override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-            }
-
-        })
-        mAdapter!!.setOnItemChildClickListener { adapter, view, position ->
+        mAdapter?.setOnItemChildClickListener { adapter, view, position ->
             Toast.makeText(context, "onItemChildClick" + position, Toast.LENGTH_LONG).show() }
         rl_find_list.adapter = mAdapter
     }
 
     override fun init() {
-        mPresenter!!.start()
+        mPresenter?.start()
         rl_find_list.layoutManager = GridLayoutManager(context,3,GridLayoutManager.VERTICAL,false)
 
         relative_search.setOnClickListener{

@@ -13,8 +13,8 @@ import com.chs.doubankotlin.util.ImageLoader
 class MovieDetailPersonAdapter(layoutResId: Int, data: MutableList<Cast>?) : BaseQuickAdapter<Cast, BaseViewHolder>(layoutResId,data) {
 
     override fun convert(helper: BaseViewHolder?, item: Cast) {
-        helper!!.setText(R.id.tv_person_name,item.name)
-        ImageLoader.loadImageView(mContext,item.avatars.medium,helper.getView(R.id.iv_person_head))
+        helper?.setText(R.id.tv_person_name,item.name)
+        ImageLoader.loadImageView(mContext,item.avatars.medium,helper?.getView(R.id.iv_person_head))
     }
 
 }

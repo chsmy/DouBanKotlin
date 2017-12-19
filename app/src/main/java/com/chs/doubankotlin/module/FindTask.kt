@@ -18,11 +18,11 @@ import io.reactivex.schedulers.Schedulers
 class FindTask : BaseTask(){
 
     fun getFindData(observer: Consumer<Find>, start:Int, count:Int){
-        val observable1 = RetrofitClient.getInstance().createReq(DataService::class.java)!!.getTop250(start,count)
-        observable1.subscribeOn(Schedulers.io())!!.unsubscribeOn(Schedulers.io())!!.observeOn(AndroidSchedulers.mainThread())
+        val observable1 = RetrofitClient.getInstance().createReq(DataService::class.java)?.getTop250(start,count)
+        observable1?.subscribeOn(Schedulers.io())?.unsubscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
 
-        val observable2 = RetrofitClient.getInstance().createReq(DataService::class.java)!!.getNewMovie("0b2bdeda43b5688921839c8ecb20399b",start,count)
-        observable2.subscribeOn(Schedulers.io())!!.unsubscribeOn(Schedulers.io())!!.observeOn(AndroidSchedulers.mainThread())
+        val observable2 = RetrofitClient.getInstance().createReq(DataService::class.java)?.getNewMovie("0b2bdeda43b5688921839c8ecb20399b",start,count)
+        observable2?.subscribeOn(Schedulers.io())?.unsubscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())
 
         Observable.zip(observable1,observable2, BiFunction<Home, Home, Find> { t1, t2 ->
             val find = Find()

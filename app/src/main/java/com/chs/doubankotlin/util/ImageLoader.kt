@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 class ImageLoader{
     companion object{
         //默认加载
-        fun loadImageView(mContext: Context, path: String, mImageView: ImageView) {
+        fun loadImageView(mContext: Context, path: String?, mImageView: ImageView?) {
             Glide.with(mContext).load(path).into(mImageView)
         }
     }

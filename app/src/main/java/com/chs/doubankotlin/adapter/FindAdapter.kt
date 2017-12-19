@@ -14,15 +14,15 @@ class FindAdapter(layoutResId: Int, sectionHeadResId: Int,data: MutableList<Find
         BaseSectionQuickAdapter<FindSection,BaseViewHolder>(layoutResId,sectionHeadResId,data){
 
     override fun convertHead(helper: BaseViewHolder?, item: FindSection?) {
-        helper!!.setText(R.id.tv_title, item!!.header)
-        helper.setVisible(R.id.tv_more, true)
-        helper.addOnClickListener(R.id.tv_more)
+        helper?.setText(R.id.tv_title, item?.header)
+        helper?.setVisible(R.id.tv_more, true)
+        helper?.addOnClickListener(R.id.tv_more)
     }
 
     override fun convert(helper: BaseViewHolder?, item: FindSection?) {
-        val entity = item!!.t
-        helper!!.setText(R.id.tv_des, entity!!.title)
-        ImageLoader.loadImageView(mContext, entity.images.large,helper.getView(R.id.iv_img)!!)
+        val entity = item?.t
+        helper?.setText(R.id.tv_des, entity?.title)
+        ImageLoader.loadImageView(mContext, entity?.images?.large,helper?.getView(R.id.iv_img))
     }
 
 }
